@@ -16,6 +16,8 @@ def clean_data(row_dict):
     for key, value in row_dict.items():
         if value == "" or value is None:
             cleaned[key] = None
+        elif key == 'googleBusinessProfile_address':
+            cleaned[key] = [addr.strip() for addr in value.split(';') if addr.strip()]
         else:
             cleaned[key] = value
     return cleaned
@@ -26,8 +28,8 @@ with open('~/Documents/data/gld-client-details/bulk_upload/files/all_clients.csv
   for lines in csvFile:
    # create the document with a custom ID
     clean_line = clean_data(lines)
-    if clean_line['drive_client_name']:
-      doc_ref = db.collection(COLLECTION).document(clean_line['drive_client_name'])      
+    if clean_line['drive_client_id']:
+      doc_ref = db.collection(COLLECTION).document(clean_line['drive_client_id'])      
       # set the fields for the given document
       doc_ref.set({
           'client_name' : clean_line['client_name'],
