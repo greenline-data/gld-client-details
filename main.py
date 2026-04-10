@@ -20,7 +20,7 @@ load_dotenv()
 PROJECT_ID = os.getenv('GCP_PROJECT')
 BUCKET_NAME = os.getenv('BUCKET_NAME')
 FIREBASE_DB = os.getenv('FIREBASE_DB')
-COLLECTION_IDS = ['automotive', 'enterprise', 'white_label', 'shift_gm', 'shift_vw', 'shift_subaru']
+COLLECTION_IDS = ['all_clients', 'automotive', 'enterprise', 'white_label', 'shift_gm', 'shift_vw', 'shift_subaru']
 POLL_INTERVAL_SECONDS = 30
 MAX_POLLS = 120
 BQ_DATASET_ID = os.getenv('BQ_DATASET_ID')
