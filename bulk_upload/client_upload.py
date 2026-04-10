@@ -93,21 +93,6 @@ def clean_data(row_dict):
 
     return cleaned
 
-# def clean_data(row_dict):
-
-#     ### Need to rework this function to explicitly set field types:
-#     ### arrays for IDs/GBP, floats for margin, strings for all others
-
-#     cleaned = {}
-#     for key, value in row_dict.items():
-#         if value == "" or value is None:
-#             cleaned[key] = None
-#         elif key == 'googleBusinessProfile_address':
-#             cleaned[key] = [addr.strip() for addr in value.split(';') if addr.strip()]
-#         else:
-#             cleaned[key] = value
-#     return cleaned
-
 with open('/Users/cbaca/Documents/data/gld-client-details/bulk_upload/files/all_clients.csv', 'r', encoding='utf-8-sig') as file:
   csvFile = csv.DictReader(file)
 

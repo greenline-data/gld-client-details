@@ -1,0 +1,9 @@
+*.json
+*.csv
+.venv/
+logs/
+.env
+.DS_Store
+scratch.py
+helper_functions/
+bulk_upload/

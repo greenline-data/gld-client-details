@@ -34,13 +34,19 @@ SCOPES = ['https://www.googleapis.com/auth/cloud-platform']
 # ---------------------
 
 def get_authenticated_session():
+    key_path = 'service_account_key.json'
 
-    creds = service_account.Credentials.from_service_account_file(
-        'service-account-key.json',
-        scopes=SCOPES
-    )
+    if os.path.exists(key_path):
+        print(f'Auth: Using local service account key at {key_path}')
 
-    # credentials, project = default()
+        creds = service_account.Credentials.from_service_account_file(
+            'service-account-key.json',
+            scopes=SCOPES
+        )
+
+    else:
+        print(f'Auth: ULocal key not found. Using Google Default Credentials...')
+        creds, project = default(scopes=SCOPES)
     
     return google.auth.transport.requests.AuthorizedSession(creds)
 
